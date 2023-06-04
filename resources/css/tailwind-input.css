@@ -20,7 +20,7 @@ body {
 }
 
 .link--hover::after {
-	@apply transition-all duration-200 content-[''] absolute left-0 -bottom-1 w-0 h-1 rounded-full;
+	@apply inline-block transition-all duration-200 content-[''] absolute left-0 -bottom-1 w-0 h-1 rounded-full;
 }
 
 .link--hover:hover::after {
@@ -33,6 +33,30 @@ body {
 
 .link--active::after {
 	@apply content-[''] absolute left-0 -bottom-1 w-full h-1 rounded-full bg-green-500;
+}
+
+.cbum .link--hover {
+	@apply relative;
+}
+
+.cbum .link--hover:hover {
+	@apply text-red-700;
+}
+
+.cbum .link--hover::after {
+	@apply inline-block transition-all duration-200 content-[''] absolute left-0 -bottom-1 w-0 h-1 rounded-full bg-red-500;
+}
+
+.cbum .link--hover:hover::after {
+	@apply content-[''] absolute left-0 -bottom-1 w-full h-1 rounded-full bg-red-500;
+}
+
+.cbum .link--active {
+	@apply relative text-neutral-800;
+}
+
+.cbum .link--active::after {
+	@apply content-[''] absolute left-0 -bottom-1 w-2 h-1 rounded-full bg-neutral-800;
 }
 
 .dropdown--hidden {

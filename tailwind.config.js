@@ -6,6 +6,7 @@ module.exports = {
 			fontFamily: {
 				brand: [
 					'poppins',
+					'Inter',
 					'Segoe UI',
 					'Roboto',
 					'Helvetica Neue',
