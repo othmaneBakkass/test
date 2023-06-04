@@ -1,0 +1,42 @@
+@tailwind base;
+
+body,
+html {
+	width: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+@tailwind components;
+
+.link--hover {
+	@apply relative;
+}
+
+.link--hover:hover {
+	@apply text-green-700;
+}
+
+.link--hover::after {
+	@apply transition-all duration-200 content-[''] absolute left-0 -bottom-1 w-0 h-1 rounded-full;
+}
+
+.link--hover:hover::after {
+	@apply content-[''] absolute left-0 -bottom-1 w-full h-1 rounded-full bg-green-500;
+}
+
+.link--active {
+	@apply relative text-green-700;
+}
+
+.link--active::after {
+	@apply content-[''] absolute left-0 -bottom-1 w-full h-1 rounded-full bg-green-500;
+}
+
+.dropdown--hidden {
+	@apply invisible opacity-0;
+}
+
+@tailwind utilities;
