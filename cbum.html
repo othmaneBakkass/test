@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-neutral-50">
 
 <head>
 	<meta charset="UTF-8">
@@ -36,7 +36,9 @@
 			</ul>
 
 			<!-- logo -->
-			<h1 class="font-brand font-black italic text-xl leading-6 my-4 uppercase">Tren.</h1>
+			<a href="#">
+				<h1 class="font-brand font-black italic text-xl leading-6 my-4 uppercase">Tren.</h1>
+			</a>
 
 			<!-- icons -->
 			<div class="flex justify-between gap-x-8">
@@ -44,7 +46,24 @@
 				<a href=""><i class="ri-shopping-cart-2-fill text-[18px] hover:text-red-700 transition-colors duration-200"></i></a>
 
 				<!-- user -->
-				<a href=""><i class="ri-user-fill text-[18px] hover:text-red-700 transition-colors duration-200"></i></i></a>
+				<div class="relative cursor-pointer">
+					<!-- user icon -->
+					<i id="dropdown-btn" class="ri-user-fill text-[18px] hover:text-red-700 transition-colors duration-200"></i>
+
+					<ul id="dropdown-list" class="dropdown--hidden transition-opacity duration-200 absolute top-8 left-0 -translate-x-1/2 shadow-md flex flex-col justify-center bg-neutral-50 text-neutral-800 rounded-xl">
+						<li class="rounded-t-xl transition-colors duration-200 hover:bg-neutral-100">
+							<a class="text-sm px-16 py-4 text-center block font-medium">
+								login
+							</a>
+						</li>
+						<li class="rounded-b-xl transition-colors duration-200 hover:bg-neutral-200">
+							<a class="rounded-b-xl text-sm px-16 py-4 text-center font-medium block transition-colors duration-200 hover:bg-neutral-100">
+								signup
+							</a>
+						</li>
+					</ul>
+				</div>
+
 			</div>
 		</div>
 	</header>
@@ -53,13 +72,144 @@
 	<section class="w-full mt-32">
 		<div class="max-w-[90%] m-auto w-full flex flex-col items-start justify-center">
 			<h1 class=" mb-6 capitalize text-7xl text-neutral-800 font-bold leading-[1.5]">Boost peformance with <br> the new holy-tren lineup.</h1>
-			<button class=" mb-16">hi</button>
+			<a href="#" class="mb-16 group">See all products
+				<span class="inline-block ml-1 group-hover:translate-x-2  transition-transform duration-300">
+					<!-- arrow icon -->
+					<svg class="inline-block w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+					</svg>
+				</span>
+			</a>
 			<div class="w-full relative rounded-full">
 				<img class="w-full object-cover  rounded-[36px]" src="./resources/imgs/cbum.png">
 			</div>
 		</div>
 
 	</section>
+
+	<!-- products -->
+	<section class="w-full mt-32">
+		<div class="max-w-[90%] m-auto">
+			<h2 class="mb-16 text-3xl text-center text-neutral-800 font-bold">Holy-tren Collection</h2>
+		</div>
+
+		<!-- filter -->
+		<div class="max-w-[90%] m-auto">
+			<h3 class="text-lg mb-4 font-medium">filter by categories:</h3>
+			<div class="flex items-center justify-between gap-6 w-max">
+				<label class="flex justify-center items-center relative cursor-pointer">
+					<input class="filter-by-category sr-only peer -z-10" name="category" type="radio" value="all" checked />
+					<div class="transition-colors capitalize px-8 py-2 rounded-full flex justify-center items-center bg-neutral-50 text-neutral-800 border border-neutral-800 peer-checked:bg-neutral-800 peer-checked:text-neutral-50">
+						all
+					</div>
+				</label>
+				<label class="flex justify-center items-center relative cursor-pointer">
+					<input class="filter-by-category sr-only peer -z-10" name="category" type="radio" value="pre-workout" />
+					<div class="transition-colors capitalize px-8 py-2 rounded-full flex justify-center items-center bg-neutral-50 text-neutral-800 border border-neutral-800 peer-checked:bg-neutral-800 peer-checked:text-neutral-50">
+						pre-workout
+					</div>
+				</label>
+				<label class="flex justify-center items-center relative cursor-pointer">
+					<input class="filter-by-category sr-only peer -z-10" name="category" type="radio" value="creatine" />
+					<div class="transition-colors capitalize px-8 py-2 rounded-full flex justify-center items-center bg-neutral-50 text-neutral-800 border border-neutral-800 peer-checked:bg-neutral-800 peer-checked:text-neutral-50">
+						creatine
+					</div>
+				</label>
+				<label class="flex justify-center items-center relative cursor-pointer">
+					<input class="filter-by-category sr-only peer -z-10" name="category" type="radio" value="protein" />
+					<div class="transition-colors capitalize px-8 py-2 rounded-full flex justify-center items-center bg-neutral-50 text-neutral-800 border border-neutral-800 peer-checked:bg-neutral-800 peer-checked:text-neutral-50">
+						protein
+					</div>
+				</label>
+			</div>
+		</div>
+
+		<!-- products -->
+		<div class="max-w-[90%] m-auto mt-8 grid gap-12 grid-cols-[repeat(auto-fit,300px)]">
+
+			<!-- product -->
+			<a href="s" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
+				<div class="flex flex-col justify-center items-center">
+					<div class="w-full h-80 relative flex justify-center items-center">
+						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="./resources/imgs/pre-workout.webp">
+					</div>
+					<div class="mt-1 w-full flex flex-col items-center justify-center border-t border-neutral-600">
+						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">pre-workout</p>
+						<h3 class="text-base mt-2 font-brand text-neutral-300">
+							baja burst
+						</h3>
+						<p class="text-base my-2 font-brand font-medium text-neutral-50">$35</p>
+
+					</div>
+				</div>
+			</a>
+
+
+			<!-- product -->
+			<a href="s" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
+				<div class="flex flex-col justify-center items-center">
+					<div class="w-full h-80 relative flex justify-center items-center">
+						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="./resources/imgs/protien-1.webp">
+					</div>
+					<div class="mt-1 w-full flex flex-col items-center justify-center border-t border-neutral-600">
+						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">protein</p>
+						<h3 class="text-base mt-2 capitalize font-brand text-neutral-300">
+							loaded protein
+						</h3>
+						<p class="text-base my-2 font-brand font-medium text-neutral-50">$35</p>
+
+					</div>
+				</div>
+			</a>
+
+			<!-- product -->
+			<a href="s" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
+				<div class="flex flex-col justify-center items-center">
+					<div class="w-full h-80 relative flex justify-center items-center">
+						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="./resources/imgs/pre-workout-2.webp">
+					</div>
+					<div class="mt-1 w-full flex flex-col items-center justify-center border-t border-neutral-600">
+						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">pre-workout</p>
+						<h3 class="text-base mt-2 font-brand text-neutral-300">
+							electric lemonade
+						</h3>
+						<p class="text-base my-2 font-brand font-medium text-neutral-50">$35</p>
+
+					</div>
+				</div>
+			</a>
+
+			<a href="s" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
+				<div class="flex flex-col justify-center items-center">
+					<div class="w-full h-80 relative flex justify-center items-center">
+						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="./resources/imgs/pre-workout.webp">
+					</div>
+					<div class="mt-1 w-full flex flex-col items-center justify-center border-t border-neutral-600">
+						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">pre-workout</p>
+						<h3 class="text-base mt-2 font-brand text-neutral-300">
+							baja burst
+						</h3>
+						<p class="text-base my-2 font-brand font-medium text-neutral-50">$35</p>
+
+					</div>
+				</div>
+			</a>
+		</div>
+	</section>
+
+	<footer class="text-neutral-900 font-brand bg-neutral-800 mt-32 rounded-t-3xl">
+		<div class="max-w-[90%] py-4 mx-auto flex items-center justify-between">
+			<p class="ml-3 text-sm text-neutral-50">&copy; 2023 Tren™. All Rights Reserved.</p>
+			<div class="flex items-center justify-between gap-4">
+				<i class="ri-twitter-fill text-base text-neutral-50 hover:text-red-400 transition-colors duration-200 cursor-pointer"></i>
+				<i class="ri-twitch-fill text-base text-neutral-50 hover:text-red-400 transition-colors duration-200 cursor-pointer"></i>
+				<i class="ri-instagram-fill text-base text-neutral-50 hover:text-red-400 transition-colors duration-200 cursor-pointer"></i>
+			</div>
+		</div>
+	</footer>
+
+	<script src="./dropdown.js"></script>
+	<script src="./filter.js"></script>
 
 </body>
 
