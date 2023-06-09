@@ -1,5 +1,10 @@
 @tailwind base;
 
+html {
+	height: 100svh;
+	scroll-behavior: smooth;
+}
+
 body,
 html {
 	width: 100%;

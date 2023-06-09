@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.min.css" integrity="sha512-tgAW/YyQHq3WCbO/Dcp7LYKKAJdCNEx1Faa0iOEygzQF1ylLv6JkBuZoVeFOqKPpsqToJC2KwUJJx+t8VQnYCg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<!-- css -->
-	<link rel="stylesheet" href="./resources/css/tailwind-output.css">
+	<link rel="stylesheet" href="{{ url_for('static', path='/css/tailwind-output.css') }}">
 </head>
 
 <body class="font-brand cbum">
@@ -28,22 +28,22 @@
 
 			<ul class="flex justify-between gap-x-8">
 				<li>
-					<a href="#" class="link--hover link--active capitalize font-medium text-neutral-800">home</a>
+					<a href="#hero" class="link--hover link--active capitalize font-medium text-neutral-800">home</a>
 				</li>
 				<li>
-					<a href="#" class="link--hover capitalize font-medium text-neutral-800">shop</a>
+					<a href="#products-section" class="link--hover capitalize font-medium text-neutral-800">shop</a>
 				</li>
 			</ul>
 
 			<!-- logo -->
-			<a href="#">
+			<a href="#hero">
 				<h1 class="font-brand font-black italic text-xl leading-6 my-4 uppercase">Tren.</h1>
 			</a>
 
 			<!-- icons -->
 			<div class="flex justify-between gap-x-8">
 				<!-- shopping cart -->
-				<a href=""><i class="ri-shopping-cart-2-fill text-[18px] hover:text-red-700 transition-colors duration-200"></i></a>
+				<a href="http://localhost:8000/cart"><i class="ri-shopping-cart-2-fill text-[18px] hover:text-red-700 transition-colors duration-200"></i></a>
 
 				<!-- user -->
 				<div class="relative cursor-pointer">
@@ -69,10 +69,10 @@
 	</header>
 
 	<!-- hero -->
-	<section class="w-full mt-32">
+	<section id="hero" class="w-full mt-32">
 		<div class="max-w-[90%] m-auto w-full flex flex-col items-start justify-center">
 			<h1 class=" mb-6 capitalize text-7xl text-neutral-800 font-bold leading-[1.5]">Boost peformance with <br> the new holy-tren lineup.</h1>
-			<a href="#" class="mb-16 group">See all products
+			<a href="#products-section" class="mb-16 group">See all products
 				<span class="inline-block ml-1 group-hover:translate-x-2  transition-transform duration-300">
 					<!-- arrow icon -->
 					<svg class="inline-block w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -81,14 +81,14 @@
 				</span>
 			</a>
 			<div class="w-full relative rounded-full">
-				<img class="w-full object-cover  rounded-[36px]" src="./resources/imgs/cbum.png">
+				<img class="w-full object-cover  rounded-[36px]" src="{{ url_for('static', path='/imgs/cbum.png') }}">
 			</div>
 		</div>
 
 	</section>
 
 	<!-- products -->
-	<section class="w-full mt-32">
+	<section id="products-section" class="w-full mt-32">
 		<div class="max-w-[90%] m-auto">
 			<h2 class="mb-16 text-3xl text-center text-neutral-800 font-bold">Holy-tren Collection</h2>
 		</div>
@@ -125,75 +125,25 @@
 		</div>
 
 		<!-- products -->
-		<div class="max-w-[90%] m-auto mt-8 grid gap-12 grid-cols-[repeat(auto-fit,300px)]">
-
+		<div id="product-container" class="max-w-[90%] m-auto mt-8 grid gap-12 grid-cols-[repeat(auto-fit,300px)]">
+			{% for product in products %}
 			<!-- product -->
-			<a href="s" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
+			<a href="http://localhost:8000/products/{{product.id}}" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
 				<div class="flex flex-col justify-center items-center">
 					<div class="w-full h-80 relative flex justify-center items-center">
-						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="./resources/imgs/pre-workout.webp">
+						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="{{ url_for('static', path='/imgs/' + product.imgs[0]) }}">
 					</div>
 					<div class="mt-1 w-full flex flex-col items-center justify-center border-t border-neutral-600">
-						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">pre-workout</p>
+						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">{{product.category}}</p>
 						<h3 class="text-base mt-2 font-brand text-neutral-300">
-							baja burst
+							{{product.name}}
 						</h3>
-						<p class="text-base my-2 font-brand font-medium text-neutral-50">$35</p>
+						<p class="text-base my-2 font-brand font-medium text-neutral-50">${{product.price}}</p>
 
 					</div>
 				</div>
 			</a>
-
-
-			<!-- product -->
-			<a href="s" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
-				<div class="flex flex-col justify-center items-center">
-					<div class="w-full h-80 relative flex justify-center items-center">
-						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="./resources/imgs/protien-1.webp">
-					</div>
-					<div class="mt-1 w-full flex flex-col items-center justify-center border-t border-neutral-600">
-						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">protein</p>
-						<h3 class="text-base mt-2 capitalize font-brand text-neutral-300">
-							loaded protein
-						</h3>
-						<p class="text-base my-2 font-brand font-medium text-neutral-50">$35</p>
-
-					</div>
-				</div>
-			</a>
-
-			<!-- product -->
-			<a href="s" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
-				<div class="flex flex-col justify-center items-center">
-					<div class="w-full h-80 relative flex justify-center items-center">
-						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="./resources/imgs/pre-workout-2.webp">
-					</div>
-					<div class="mt-1 w-full flex flex-col items-center justify-center border-t border-neutral-600">
-						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">pre-workout</p>
-						<h3 class="text-base mt-2 font-brand text-neutral-300">
-							electric lemonade
-						</h3>
-						<p class="text-base my-2 font-brand font-medium text-neutral-50">$35</p>
-
-					</div>
-				</div>
-			</a>
-
-			<a href="s" class="w-full bg-gradient-to-b from-neutral-600 to-neutral-800 rounded-3xl group shadow-3xl relative overflow-hidden">
-				<div class="flex flex-col justify-center items-center">
-					<div class="w-full h-80 relative flex justify-center items-center">
-						<img class="w-[90%] object-contain rounded-t-3xl  duration-300 transition-transform group-hover:scale-105" src="./resources/imgs/pre-workout.webp">
-					</div>
-					<div class="mt-1 w-full flex flex-col items-center justify-center border-t border-neutral-600">
-						<p class="text-sm mt-2 capitalize font-brand text-neutral-400">pre-workout</p>
-						<h3 class="text-base mt-2 font-brand text-neutral-300">
-							baja burst
-						</h3>
-						<p class="text-base my-2 font-brand font-medium text-neutral-50">$35</p>
-
-					</div>
-				</div>
-			</a>
+			{% endfor %}
 		</div>
 	</section>
 
@@ -208,8 +158,8 @@
 		</div>
 	</footer>
 
-	<script src="./dropdown.js"></script>
-	<script src="./filter.js"></script>
+	<script src="{{ url_for('static', path='/js/dropdown.js') }}"></script>
+	<script src="{{ url_for('static', path='/js/filter.js') }}"></script>
 
 </body>
 

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- Fonts Links -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<!-- icons links -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- css -->
+	<link rel="stylesheet" href="{{ url_for('static', path='/css/tailwind-output.css')}}">
+</head>
+
+<body>
+	<!-- navbar -->
+	<header class="w-full">
+		<!-- logo section -->
+		<div class="w-full flex items-center justify-center border-b border-neutral-600">
+			<h1 class="font-logo text-2xl my-4">Kayo</h1>
+		</div>
+		<!-- navigation -->
+		<div class="w-full flex items-center justify-between mb-3 border-b border-neutral-600">
+
+			<div class="w-52 h-12 border-r border-neutral-600 flex justify-evenly items-center">
+
+				<div class="relative cursor-pointer">
+					<!-- user icon -->
+					<i id="dropdown-btn" class="fa-solid fa-user text-[16px] p-2  hover:text-green-700 transition-colors duration-200"></i>
+
+					<ul id="dropdown-list" class="dropdown--hidden transition-opacity duration-200 absolute top-8 left-1/2 -translate-x-1/2 divide-y divide-neutral-600 border border-neutral-600 flex flex-col justify-center bg-neutral-50 text-neutral-900 font-brand rounded-lg">
+						<li class="rounded-tr-lg rounded-tl-lg transition-colors duration-200 hover:bg-neutral-900 hover:text-neutral-50">
+							<a class="text-sm px-16 py-4 text-center block">
+								login
+							</a>
+						</li>
+						<li class="rounded-br-lg rounded-bl-lg transition-colors duration-200 hover:bg-neutral-900 hover:text-neutral-50">
+							<a class="rounded-br-lg rounded-bl-lg text-sm px-16 py-4 text-center block transition-colors duration-200 hover:bg-neutral-900 hover:text-neutral-50">
+								signup
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="flex items-center justify-center gap-x-8">
+				<a class="font-brand font-medium link--hover" href="http://localhost:8000/reda">Home</a>
+				<a class="font-brand font-medium {%if category == 'jeans' %} link--active {% endif %} link--hover" href="http://localhost:8000/products/category/jeans">Jeans</a>
+				<a class="font-brand font-medium {%if category == 'tshirt' %} link--active {% endif %} link--hover" href="http://localhost:8000/products/category/tshirt">T-shirts</a>
+				<a class="font-brand font-medium {%if category == 'shoes' %} link--active {% endif %} link--hover" href="http://localhost:8000/products/category/shoes">Shoes</a>
+			</div>
+
+			<div class="w-52 h-12 border-l border-neutral-600 flex justify-evenly items-center">
+				<!-- cart icon -->
+				<a href=""><i class="fa-sharp fa-solid fa-cart-shopping text-[16px] hover:text-green-700 transition-colors duration-200"></i></a>
+			</div>
+
+		</div>
+	</header>
+
+	<main>
+		<!-- hero  -->
+		<section id="home" class="w-full my-12">
+			<div class="bg-gradient-to-r from-green-800 to-green-500 max-w-[90%] m-auto flex justify-between items-center rounded-3xl pt-6 px-12 pb-0">
+				<!-- text -->
+				<div class="flex flex-col ">
+					<h3 class="text-8xl text-brand text-neutral-50 font-bold">New-Season <br>Collection</h3>
+					<div class="mt-2 pl-7 py-4 border-l-4 border-neutral-50">
+						<h5 class="text-lg text-brand text-neutral-50 font-medium">10% off your first purchase.</h5>
+					</div>
+				</div>
+				<!-- img -->
+				<div>
+					<div class="w-[34rem] relative">
+						<!-- big circle  
+						<div class="hidden absolute top-[2%] right-[50%] w-96 h-96 rounded-full bg-green-500"></div> -->
+						<img class="w-full object-cover" src="{{ url_for('static', path='/imgs/main-img.webp')}}">
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- products -->
+		<section id="products" class="w-full mb-12 mt-24">
+
+			<h2 class="text-3xl font-brand capitalize font-medium text-center py-2 border-y border-neutral-900">Latest Products</h2>
+
+
+			<div class="max-w-[90%] m-auto mt-24 grid gap-12 grid-cols-[repeat(auto-fill,320px)] justify-center">
+
+				{% for product in products %}
+				<!-- product -->
+				<a href="http://localhost:8000/products/{{product.id}}" class="w-full duration-300 transition-all hover:opacity-95 hover:scale-95 ">
+
+					<div class="flex flex-col justify-center items-center">
+						<div class="w-full h-[512px] relative">
+							<img class="w-full h-full object-cover rounded-lg" src="{{ url_for('static', path='/imgs/' + product.imgs[0]) }}">
+						</div>
+						<div class="mt-1 w-full flex justify-between">
+							<div>
+								<h3 class="text-base font-brand text-neutral-900">
+									{{product.name}}
+								</h3>
+								<p class="text-xs capitalize font-brand text-neutral-500">{{product.category}}</p>
+							</div>
+							<p class="text-base font-brand font-medium text-gray-800">${{product.price}}</p>
+
+						</div>
+					</div>
+				</a>
+				{% endfor %}
+
+			</div>
+
+		</section>
+
+
+		<footer class="text-neutral-900 font-brand border-t border-neutral-400 mt-12">
+			<div class="container px-5 py-4 mx-auto flex items-center flex-col">
+				<p class="ml-3 text-xl font-logo">Kayo</p>
+				<p class="text-sm text-neutral-500 mt-4">copyright — 2023</p>
+			</div>
+		</footer>
+
+	</main>
+
+	<script src="{{ url_for('static', path='/js/dropdown.js') }}"></script>
+</body>
+
+</html>

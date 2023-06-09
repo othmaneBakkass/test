@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<!-- Fonts Links -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Kaushan+Script&display=swap" rel="stylesheet">
+
+	<!-- icons links -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.min.css" integrity="sha512-tgAW/YyQHq3WCbO/Dcp7LYKKAJdCNEx1Faa0iOEygzQF1ylLv6JkBuZoVeFOqKPpsqToJC2KwUJJx+t8VQnYCg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+	<!-- css -->
+	<link rel="stylesheet" href="{{ url_for('static', path='/css/tailwind-output.css') }}">
+</head>
+
+<body class="font-brand cbum">
+
+	<!-- navbar -->
+	<header class="w-full pt-4">
+		<div class="max-w-[90%] m-auto w-full flex items-center justify-between">
+			<!-- links -->
+
+			<ul class="flex justify-between gap-x-8">
+				<li>
+					<a href="#" class="link--hover capitalize font-medium text-neutral-800">home</a>
+				</li>
+			</ul>
+
+			<!-- logo -->
+			<a href="#">
+				<h1 class="font-brand font-black italic text-xl leading-6 my-4 uppercase">Tren.</h1>
+			</a>
+
+			<!-- icons -->
+			<div class="flex justify-between gap-x-8">
+				<!-- shopping cart -->
+				<a href=""><i class="ri-shopping-cart-2-fill text-[18px] hover:text-red-700 transition-colors duration-200"></i></a>
+
+				<!-- user -->
+				<div class="relative cursor-pointer">
+					<!-- user icon -->
+					<i id="dropdown-btn" class="ri-user-fill text-[18px] hover:text-red-700 transition-colors duration-200"></i>
+
+					<ul id="dropdown-list" class="dropdown--hidden transition-opacity duration-200 absolute top-8 left-0 -translate-x-1/2 shadow-md flex flex-col justify-center bg-neutral-50 text-neutral-800 rounded-xl">
+						<li class="rounded-t-xl transition-colors duration-200 hover:bg-neutral-100">
+							<a class="text-sm px-16 py-4 text-center block font-medium">
+								login
+							</a>
+						</li>
+						<li class="rounded-b-xl transition-colors duration-200 hover:bg-neutral-200">
+							<a class="rounded-b-xl text-sm px-16 py-4 text-center font-medium block transition-colors duration-200 hover:bg-neutral-100">
+								signup
+							</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</header>
+
+
+	<main class="w-full">
+		<!-- checkout -->
+		<section class="w-[90%] m-auto mt-32 flex flex-col items-center justify-center">
+			<h1 class="text-3xl font-bold mb-8 capitalize">checkout</h1>
+			<form id="checkout-form">
+
+				<div class="pb-12">
+					<h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+					<p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
+
+					<div class="mt-7 grid grid-cols-2 gap-x-6 gap-y-8 max-w-4xl">
+						<!-- first name -->
+						<div class="col-[1/2]">
+							<label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+							<div class="mt-2">
+								<input placeholder="your first name" type="text" name="first-name" id="first-name" autocomplete="given-name" class=" h-10 bg-gray-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200">
+							</div>
+							<p id="first-name-msg" class="text-xs mt-1 font-medium invisible"><i class="text-sm mr-2 ri-error-warning-fill"></i>please enter a valid first name</p>
+						</div>
+
+						<!-- last name -->
+						<div class="col-[2/3]">
+							<label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+							<div class="mt-2">
+								<input placeholder="your last name" type="text" name="last-name" id="last-name" class=" h-10 bg-gray-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200">
+							</div>
+							<p id="last-name-msg" class="text-xs mt-1 font-medium invisible"><i class="text-sm mr-2 ri-error-warning-fill"></i>please enter a valid last name</p>
+						</div>
+
+						<!-- email -->
+						<div class="col-[1/3]">
+							<label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+							<div class="mt-2">
+								<input placeholder="your email" type="email" name="email" id="email" class=" h-10 bg-gray-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200">
+							</div>
+							<p id="email-msg" class="text-xs mt-1 font-medium invisible"><i class="text-sm mr-2 ri-error-warning-fill"></i>please enter a valid email</p>
+						</div>
+
+						<!-- address -->
+						<div class="col-[1/3]">
+							<label for="address" class="block text-sm font-medium leading-6 text-gray-900">Address</label>
+							<div class="mt-2">
+								<input placeholder="your address" type="text" name="address" id="address" class=" h-10 bg-gray-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200">
+							</div>
+							<p id="address-msg" class="text-xs mt-1 font-medium invisible"><i class="text-sm mr-2 ri-error-warning-fill"></i>please enter a valid address</p>
+						</div>
+					</div>
+
+
+					<h2 class="mt-10 text-base font-semibold leading-7 text-gray-900">Bank Details</h2>
+					<p class="mt-1 text-sm leading-6 text-gray-600">enter your card details here.</p>
+
+					<div class="mt-7 grid grid-cols-2 gap-x-6 gap-y-8 max-w-4xl">
+						<!-- card number -->
+						<div class="col-[1/3]">
+							<label for="card-number" class="block text-sm font-medium leading-6 text-gray-900">Card number</label>
+							<div class="mt-2">
+								<input placeholder="5555 5555 5555 5555" type="text" name="card-number" id="card-number" class="h-10 bg-gray-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200">
+							</div>
+						</div>
+
+						<div class="flex col-[1/3] gap-x-4 w-full justify-between">
+							<!-- month -->
+							<div>
+								<label for="month" class="block text-sm font-medium leading-6 text-gray-900">expiration month</label>
+								<div class="mt-2">
+									<input placeholder="11" type="text" name="month" id="month" class=" h-10 bg-gray-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200">
+								</div>
+							</div>
+
+							<!-- year -->
+							<div>
+								<label for="year" class="block text-sm font-medium leading-6 text-gray-900">expiration year</label>
+								<div class="mt-2">
+									<input placeholder="1111" type="text" name="year" id="year" class=" h-10 bg-gray-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200">
+								</div>
+							</div>
+
+							<!-- security -->
+							<div>
+								<label for="security-code" class="block text-sm font-medium leading-6 text-gray-900">security code</label>
+								<div class="mt-2">
+									<input placeholder="3 - digits" type="text" name="security-code" id="security-code" class=" h-10 bg-gray-50 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-200">
+								</div>
+							</div>
+						</div>
+						<p id="bank-msg" class="text-sm mt-1 col-[1/2] font-medium invisible"><i class="text-sm mr-2 ri-error-warning-fill"></i>please enter valid bank details</p>
+
+						<!-- button -->
+						<button type="submit" class="justify-self-end  col-[2/3] rounded-md bg-blue-400 px-24 py-2 font-medium text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+							confirm
+						</button>
+					</div>
+
+				</div>
+			</form>
+		</section>
+	</main>
+	<footer class="text-neutral-900 font-brand bg-neutral-800 mt-8 rounded-t-3xl">
+		<div class="max-w-[90%] py-4 mx-auto flex items-center justify-between">
+			<p class="ml-3 text-sm text-neutral-50">&copy; 2023 Tren™. All Rights Reserved.</p>
+			<div class="flex items-center justify-between gap-4">
+				<i class="ri-twitter-fill text-base text-neutral-50 hover:text-red-400 transition-colors duration-200 cursor-pointer"></i>
+				<i class="ri-twitch-fill text-base text-neutral-50 hover:text-red-400 transition-colors duration-200 cursor-pointer"></i>
+				<i class="ri-instagram-fill text-base text-neutral-50 hover:text-red-400 transition-colors duration-200 cursor-pointer"></i>
+			</div>
+		</div>
+	</footer>
+
+
+	<script src="{{ url_for('static', path='/js/dropdown.js') }}"></script>
+	<script type="module" src="{{ url_for('static', path='/js/checkout-form/form.mjs') }}"></script>
+
+</body>
+
+</html>

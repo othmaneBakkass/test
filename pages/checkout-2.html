@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<!-- Fonts Links -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<!-- icons links -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- css -->
+	<link rel="stylesheet" href="{{ url_for('static', path='/css/tailwind-output.css') }}">
+</head>
+
+<body class="font-brand bg-stone-50">
+
+	<!-- navbar -->
+	<header class="w-full">
+		<!-- logo section -->
+		<div class="w-full flex items-center justify-center border-b border-neutral-600">
+			<h1 class="font-logo text-2xl my-4">Kayo</h1>
+		</div>
+		<!-- navigation -->
+		<div class="w-full flex items-center justify-between mb-3 border-b border-neutral-600">
+
+			<div class="w-52 h-12 border-r border-neutral-600 flex justify-evenly items-center">
+
+				<div class="relative cursor-pointer">
+					<!-- user icon -->
+					<i id="dropdown-btn" class="fa-solid fa-user text-[16px] p-2  hover:text-green-700 transition-colors duration-200"></i>
+
+					<ul id="dropdown-list" class="dropdown--hidden transition-opacity duration-200 absolute top-8 left-1/2 -translate-x-1/2 divide-y divide-neutral-600 border border-neutral-600 flex flex-col justify-center bg-neutral-50 text-neutral-900 font-brand rounded-lg">
+						<li class="rounded-tr-lg rounded-tl-lg transition-colors duration-200 hover:bg-neutral-900 hover:text-neutral-50">
+							<a class="text-sm px-16 py-4 text-center block">
+								login
+							</a>
+						</li>
+						<li class="rounded-br-lg rounded-bl-lg transition-colors duration-200 hover:bg-neutral-900 hover:text-neutral-50">
+							<a class="rounded-br-lg rounded-bl-lg text-sm px-16 py-4 text-center block transition-colors duration-200 hover:bg-neutral-900 hover:text-neutral-50">
+								signup
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="flex items-center justify-center gap-x-8">
+				<a class="font-brand font-medium link--hover" href="">Home</a>
+			</div>
+
+			<div class="w-52 h-12 border-l border-neutral-600 flex justify-evenly items-center">
+				<!-- cart icon -->
+				<a href=""><i class="fa-sharp fa-solid fa-cart-shopping text-[16px] hover:text-green-700 transition-colors duration-200"></i></a>
+			</div>
+
+		</div>
+	</header>
+
+
+	<main class="w-full m-auto max-w-screen-md p-4 mt-16 rounded-2xl bg-white border border-neutral-200">
+		<!-- checkout -->
+		<section>
+			<h1 class="text-3xl font-medium mb-7 pt-1 pb-5 border-b border-neutral-400 capitalize text-center">checkout</h1>
+			<form id="checkout-form">
+
+				<div class="pb-12">
+
+					<div class="mt-7 grid grid-cols-2 gap-x-6 gap-y-8 max-w-4xl">
+						<!-- first name -->
+						<div class="col-[1/2]">
+							<label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+							<div class="mt-2">
+								<input placeholder="your first name" type="text" name="first-name" id="first-name" autocomplete="given-name" class=" h-10  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-neutral-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800">
+							</div>
+							<p id="first-name-msg" class="text-xs mt-1 font-medium invisible">invalid first name</p>
+						</div>
+
+						<!-- last name -->
+						<div class="col-[2/3]">
+							<label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+							<div class="mt-2">
+								<input placeholder="your last name" type="text" name="last-name" id="last-name" class=" h-10  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-neutral-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800">
+							</div>
+							<p id="last-name-msg" class="text-xs mt-1 font-medium invisible">invalid last name</p>
+						</div>
+
+						<!-- email -->
+						<div class="col-[1/2]">
+							<label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+							<div class="mt-2">
+								<input placeholder="your email" type="email" name="email" id="email" class=" h-10  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-neutral-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800">
+							</div>
+							<p id="email-msg" class="text-xs mt-1 font-medium invisible">invalid email</p>
+						</div>
+
+						<!-- address -->
+						<div class="col-[2/3]">
+							<label for="address" class="block text-sm font-medium leading-6 text-gray-900">Address</label>
+							<div class="mt-2">
+								<input placeholder="your address" type="text" name="address" id="address" class=" h-10  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-neutral-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800">
+							</div>
+							<p id="address-msg" class="text-xs mt-1 font-medium invisible">invalid address</p>
+						</div>
+					</div>
+
+					<div class="mt-7 grid grid-cols-2 gap-x-6 gap-y-8 max-w-4xl">
+						<!-- card number -->
+						<div class="col-[1/2]">
+							<label for="card-number" class="block text-sm font-medium leading-6 text-gray-900">Card number</label>
+							<div class="mt-2">
+								<input placeholder="0000 0000 0000 0000" type="text" name="card-number" id="card-number" class="h-10  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-neutral-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800">
+							</div>
+						</div>
+
+						<div class="col-[2/3]">
+							<!-- security -->
+							<div>
+								<label for="security-code" class="block text-sm font-medium leading-6 text-gray-900">CVC</label>
+								<div class="mt-2">
+									<input placeholder="000" type="text" name="security-code" id="security-code" class=" h-10  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-neutral-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-[1/2]">
+							<!-- month -->
+							<div>
+								<label for="month" class="block text-sm font-medium leading-6 text-gray-900">expiration month</label>
+								<div class="mt-2">
+									<input placeholder="00" type="text" name="month" id="month" class=" h-10  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-neutral-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-[2/3]">
+							<!-- year -->
+							<div>
+								<label for="year" class="block text-sm font-medium leading-6 text-gray-900">expiration year</label>
+								<div class="mt-2">
+									<input placeholder="0000" type="text" name="year" id="year" class=" h-10  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-neutral-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-800">
+								</div>
+							</div>
+						</div>
+						<p id="bank-msg" class="text-xs mt-1 col-[1/3] font-medium invisible">invalid bank details</p>
+
+						<!-- button -->
+						<button type="submit" class="transition-colors  col-[1/3] rounded-md bg-neutral-50 border border-neutral-600 px-24 py-2 font-medium hover:text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+							confirm your purchase
+						</button>
+					</div>
+
+				</div>
+			</form>
+		</section>
+	</main>
+	<footer class="text-neutral-900 font-brand border-t border-neutral-400 mt-12">
+		<div class="container px-5 py-4 mx-auto flex items-center flex-col">
+			<p class="ml-3 text-xl font-logo">Kayo</p>
+			<p class="text-sm text-neutral-500 mt-4">copyright — 2023</p>
+		</div>
+	</footer>
+
+	<script src="{{ url_for('static', path='/js/dropdown.js') }}"></script>
+	<script type="module" src="{{ url_for('static', path='/js/checkout-form/form.mjs') }}"></script>
+</body>
+
+</html>
