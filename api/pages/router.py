@@ -14,11 +14,6 @@ from ..products.services import (
 templates = Jinja2Templates(directory="pages")
 pages_router = APIRouter(tags=["pages"])
 
-# @pages_router.get("/prepare_cart")
-# async def checkout_page(test: Annotated[str | None, Cookie()] = None):
-#     v = json.loads(test)
-#     return {"hi": 2, "hello": v["id"]}
-
 
 @pages_router.get("/cbum", response_class=HTMLResponse)
 def home_page(request: Request):
@@ -55,7 +50,7 @@ def home_page(request: Request, id: int):
     data = get_product_by_id(id)
     if data[0] == True:
         return templates.TemplateResponse(
-            "reda.products.html", {"request": request, "product": data[1]}
+            "cbum.products.html", {"request": request, "product": data[1]}
         )
 
 
@@ -69,7 +64,7 @@ def home_page(
         products = get_many_products_by_ids(cartInfo["products"])
 
         return templates.TemplateResponse(
-            "reda.cart.html",
+            "cbum.cart.html",
             {
                 "request": request,
                 "products": products[1],
@@ -88,9 +83,7 @@ def home_page(
 
 @pages_router.get("/checkout", response_class=HTMLResponse)
 def home_page(request: Request):
-    return templates.TemplateResponse(
-        "checkout.html", {"request": request, "data": "gay"}
-    )
+    return templates.TemplateResponse("reda.checkout.html", {"request": request})
 
 
 @pages_router.get("/login", response_class=HTMLResponse)

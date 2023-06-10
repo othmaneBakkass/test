@@ -96,8 +96,8 @@
 										<h4 class="text-sm  text-neutral-500">size - <span data-size-id='{{product.id}}'>{{item.size}}</span></h4>
 										{% endif %}
 										{% endfor %}
-										<select data-select-qty-id='{{product.id}}' class="select-qty w-full cursor-pointer rounded-lg border-neutral-200">
-											<option value="1">1</option>
+										<select data-select-qty-id='{{product.id}}' data-qty="1" data-product-price="{{product.price}}" class="select-qty w-full cursor-pointer rounded-lg border-neutral-200">
+											<option value="1" selected>1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
 											<option value="4">4</option>
@@ -129,11 +129,11 @@
 					<div class="w-full">
 						<div class="flex justify-between items-center text-base font-medium text-neutral-50 mb-1">
 							<h4>Subtotal</h4>
-							<p>$<span id="Subtotal"></span>{{total}}</p>
+							<p>$<span id="Subtotal">{{total}}</span></p>
 						</div>
 						<div class="flex justify-between items-center text-base font-medium text-neutral-50 mb-1">
 							<h4>Shipping</h4>
-							<p>$<span id="Shipping"></span>10.00</p>
+							<p>$<span id="Shipping">10.00</span></p>
 						</div>
 						<div class="flex justify-between items-center text-base font-medium text-neutral-50 mb-1">
 							<h4>Total</h4>

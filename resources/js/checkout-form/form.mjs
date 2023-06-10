@@ -1,4 +1,5 @@
-import { classesToAdd, classesToRemove } from '../utils.mjs';
+import { classesToAdd, classesToRemove, handleFieldState } from '../utils.mjs';
+import { addOrder } from './add-order.mjs';
 import {
 	validateAddress,
 	validateCardNumber,
@@ -33,32 +34,10 @@ const securityCodeField = document.getElementById('security-code');
 
 const bankMsg = document.getElementById('bank-msg');
 
-function handleFieldState(validator, inputField, msgField) {
-	const isValid = validator(inputField);
+const cookieManager = new UniversalCookie();
+const cookie = cookieManager.get('cart');
 
-	if (isValid.ok) {
-		classesToAdd(inputField, ['ring-gray-300']);
-		classesToRemove(inputField, ['ring-red-300']);
-
-		if (msgField) {
-			classesToAdd(msgField, ['invisible']);
-			classesToRemove(msgField, ['visible']);
-		}
-		return true;
-	}
-
-	classesToAdd(inputField, ['ring-red-300']);
-	classesToRemove(inputField, ['ring-gray-300']);
-
-	if (msgField) {
-		classesToAdd(msgField, ['visible', 'text-red-400']);
-		classesToRemove(msgField, ['invisible']);
-	}
-
-	return false;
-}
-
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
 	const isValidFirstName = handleFieldState(
@@ -105,16 +84,19 @@ form.addEventListener('submit', (e) => {
 			isValidEmailField &&
 			isValidAddress
 		) {
-			console.log({
-				firstName: firstNameField.value,
-				lastName: lastNameField.value,
-				email: emailField.value,
+			// check bank details
+
+			const order = {
 				address: addressField.value,
-				cardNumber: cardNumberField.value,
-				month: monthField.value,
-				year: yearField.value,
-				securityCode: securityCodeField.value
-			});
+				email: emailField.value,
+				first_name: firstNameField.value,
+				last_name: lastNameField.value,
+				order_total: Number(cookie.total)
+			};
+
+			const orderItems = JSON.parse(localStorage.getItem('order_items'));
+
+			await addOrder(order, orderItems);
 		}
 	} else {
 		classesToRemove(bankMsg, ['invisible']);
