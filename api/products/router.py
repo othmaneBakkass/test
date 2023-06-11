@@ -3,7 +3,6 @@ from .services import (
     get_all_products,
     get_product_by_id,
     get_products_by_category,
-    get_many_products_by_ids,
 )
 
 

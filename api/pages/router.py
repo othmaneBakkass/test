@@ -74,7 +74,7 @@ def home_page(
         )
 
     return templates.TemplateResponse(
-        "reda.cart.html",
+        "cbum.cart.html",
         {
             "request": request,
         },

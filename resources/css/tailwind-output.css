@@ -2291,6 +2291,10 @@ body {
      object-position: top;
 }
 
+.p-11 {
+  padding: 2.75rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -2303,8 +2307,9 @@ body {
   padding: 1.5rem;
 }
 
-.p-11 {
-  padding: 2.75rem;
+.px-11 {
+  padding-left: 2.75rem;
+  padding-right: 2.75rem;
 }
 
 .px-12 {
@@ -2377,6 +2382,11 @@ body {
   padding-bottom: 0.75rem;
 }
 
+.py-36 {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -2390,16 +2400,6 @@ body {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.px-11 {
-  padding-left: 2.75rem;
-  padding-right: 2.75rem;
-}
-
-.py-36 {
-  padding-top: 9rem;
-  padding-bottom: 9rem;
 }
 
 .pb-0 {
@@ -2964,11 +2964,6 @@ body {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.hover\:text-green-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(22 101 52 / var(--tw-text-opacity));
-}
-
 .hover\:opacity-95:hover {
   opacity: 0.95;
 }
@@ -3027,19 +3022,29 @@ body {
   background-color: rgb(229 229 229 / var(--tw-bg-opacity));
 }
 
+.disabled\:bg-neutral-400:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 163 163 / var(--tw-bg-opacity));
+}
+
 .disabled\:text-neutral-600:disabled {
   --tw-text-opacity: 1;
   color: rgb(82 82 82 / var(--tw-text-opacity));
 }
 
-.disabled\:hover\:bg-neutral-400:hover:disabled {
-  --tw-bg-opacity: 1;
-  background-color: rgb(163 163 163 / var(--tw-bg-opacity));
-}
-
 .disabled\:hover\:bg-neutral-300:hover:disabled {
   --tw-bg-opacity: 1;
   background-color: rgb(212 212 212 / var(--tw-bg-opacity));
+}
+
+.hover\:disabled\:bg-neutral-500:disabled:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(115 115 115 / var(--tw-bg-opacity));
+}
+
+.hover\:disabled\:text-neutral-700:disabled:hover {
+  --tw-text-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:translate-x-2 {

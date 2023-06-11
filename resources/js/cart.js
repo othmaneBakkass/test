@@ -54,6 +54,7 @@ function updateCartTotalWhenProductQuantityChanges(e) {
 
 		subtotal.textContent = total;
 		totalPrice.textContent = total + Number(shippingCost.textContent);
+		// totalPrice.textContent = total;
 		return;
 	}
 
@@ -152,14 +153,22 @@ function handleRemoveCartItem(e) {
 
 	if (NumberOfProducts.length === 0) {
 		ProceedToCheckoutBtn.setAttribute('disabled', true);
+		subtotal.textContent = '0';
+		totalPrice.textContent = shippingCost.textContent;
+	} else {
+		// update total and subtotal
+		const total = Number(cookie.total) - Number(productPrice);
+
+		subtotal.textContent = total;
+		totalPrice.textContent = Number(totalPrice.textContent) - total;
 	}
-	// update total and subtotal
-	const total = Number(cookie.total) - Number(productPrice);
-
-	// totalPrice.textContent = Number(totalPrice.textContent) - total;
-
-	subtotal.textContent = total;
-	totalPrice.textContent = Number(totalPrice.textContent) - total;
+	console.log(
+		'🚀 ~ total, cookieTotal, productPrice ~',
+		total,
+		cookie.total,
+		productPrice,
+		ProceedToCheckoutBtn
+	);
 }
 
 removeBtns.forEach((el) => {
