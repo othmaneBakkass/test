@@ -84,14 +84,15 @@ form.addEventListener('submit', async (e) => {
 			isValidEmailField &&
 			isValidAddress
 		) {
-			// check bank details
+			const userId = cookieManager.get('auth_id');
 
 			const order = {
 				address: addressField.value,
 				email: emailField.value,
 				first_name: firstNameField.value,
 				last_name: lastNameField.value,
-				order_total: Number(cookie.total)
+				order_total: Number(cookie.total),
+				user_id: userId === 'not_logged_in' ? undefined : userId
 			};
 
 			const orderItems = JSON.parse(localStorage.getItem('order_items'));

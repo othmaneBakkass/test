@@ -93,7 +93,7 @@ function updateCartTotalWhenProductQuantityChanges(e) {
 		selector.setAttribute('data-qty', currentQty);
 
 		subtotal.textContent = total;
-		totalPrice.textContent = Number(totalPrice.textContent) - total;
+		totalPrice.textContent = total + Number(shippingCost.textContent);
 		return;
 	}
 }
@@ -160,7 +160,7 @@ function handleRemoveCartItem(e) {
 		const total = Number(cookie.total) - Number(productPrice);
 
 		subtotal.textContent = total;
-		totalPrice.textContent = Number(totalPrice.textContent) - total;
+		totalPrice.textContent = total + Number(shippingCost.textContent);
 	}
 	console.log(
 		'🚀 ~ total, cookieTotal, productPrice ~',

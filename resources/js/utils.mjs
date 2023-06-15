@@ -10,11 +10,11 @@ export function classesToRemove(field, classes) {
 	field.classList.remove(...classes);
 }
 
-export function handleFieldState(validator, inputField, msgField) {
+export function handleFieldState(validator, inputField, msgField, darkMode) {
 	const isValid = validator(inputField);
 
 	if (isValid.ok) {
-		classesToAdd(inputField, ['ring-gray-300']);
+		classesToAdd(inputField, ['ring-gray-300', 'ring-neutral-600']);
 		classesToRemove(inputField, ['ring-red-300']);
 
 		if (msgField) {
@@ -25,10 +25,13 @@ export function handleFieldState(validator, inputField, msgField) {
 	}
 
 	classesToAdd(inputField, ['ring-red-300']);
-	classesToRemove(inputField, ['ring-gray-300']);
+	classesToRemove(inputField, ['ring-gray-300', 'ring-neutral-600']);
 
 	if (msgField) {
-		classesToAdd(msgField, ['visible', 'text-red-400']);
+		classesToAdd(msgField, [
+			'visible',
+			darkMode ? 'text-red-300' : 'text-red-400'
+		]);
 		classesToRemove(msgField, ['invisible']);
 	}
 

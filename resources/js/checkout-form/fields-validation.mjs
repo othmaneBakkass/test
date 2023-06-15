@@ -63,3 +63,13 @@ export function validateSecurityCode(inputField) {
 	}
 	return { ok: false };
 }
+
+export function validatePassword(inputField) {
+	const valueLength = inputField.value.length;
+	const value = Number(inputField.value);
+
+	if (typeof value === 'number' && valueLength === 8) {
+		return { ok: true };
+	}
+	return { ok: false };
+}

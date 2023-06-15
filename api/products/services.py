@@ -56,16 +56,12 @@ def get_product_info(product: Products, session: Session):
 
 
 def get_all_products():
-    try:
-        with Session(engine) as session:
-            products = session.exec(select(Products)).all()
+    with Session(engine) as session:
+        products = session.exec(select(Products)).all()
 
-            data = get_many_product_info(products, session)
+        data = get_many_product_info(products, session)
 
-            return (True, data)
-    except:
-        print("🚀 ~ get_all_products ~ error")
-        return (False, "database error")
+        return (True, data)
 
 
 def get_products_by_category(category: str):

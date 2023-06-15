@@ -48,18 +48,34 @@
 					<!-- user icon -->
 					<i id="dropdown-btn" class="ri-user-fill text-[18px] hover:text-red-700 transition-colors duration-200"></i>
 
+					{% if auth_id == "not_logged_in" %}
+
 					<ul id="dropdown-list" class="dropdown--hidden transition-opacity duration-200 absolute top-8 left-0 -translate-x-1/2 shadow-md flex flex-col justify-center bg-neutral-50 text-neutral-800 rounded-xl">
 						<li class="rounded-t-xl transition-colors duration-200 hover:bg-neutral-100">
-							<a class="text-sm px-16 py-4 text-center block font-medium">
+							<a href="http://localhost:8000/login" class="text-sm px-16 py-4 text-center block font-medium">
 								login
 							</a>
 						</li>
 						<li class="rounded-b-xl transition-colors duration-200 hover:bg-neutral-200">
-							<a class="rounded-b-xl text-sm px-16 py-4 text-center font-medium block transition-colors duration-200 hover:bg-neutral-100">
+							<a href="http://localhost:8000/signup" class="rounded-b-xl text-sm px-16 py-4 text-center font-medium block transition-colors duration-200 hover:bg-neutral-100">
 								signup
 							</a>
 						</li>
 					</ul>
+					{% else %}
+					<ul id="dropdown-list" class="dropdown--hidden transition-opacity duration-200 absolute top-8 left-0 -translate-x-1/2 shadow-md flex flex-col justify-center bg-neutral-50 text-neutral-800 rounded-xl">
+						<li class="rounded-t-xl transition-colors duration-200 hover:bg-neutral-100">
+							<a href="http://localhost:8000/profile" class="text-sm px-16 py-4 text-center block font-medium">
+								profile
+							</a>
+						</li>
+						<li class="rounded-b-xl transition-colors duration-200 hover:bg-neutral-200">
+							<a href="http://localhost:8000/logout" class="rounded-b-xl text-sm px-16 py-4 text-center font-medium block transition-colors duration-200 hover:bg-neutral-100">
+								logout
+							</a>
+						</li>
+					</ul>
+					{% endif%}
 				</div>
 
 			</div>
@@ -90,7 +106,7 @@
 
 								<div class="w-full flex justify-between items-center text-sm font-medium text-neutral-800">
 									<div>
-										<h3>{{product.name}}</h3>
+										<h3 data-name-id="{{product.id}}">{{product.name}}</h3>
 										{% for item in size_to_product_id %}
 										{% if item.id == product.id %}
 										<h4 class="text-sm  text-neutral-500">size - <span data-size-id='{{product.id}}'>{{item.size}}</span></h4>
@@ -175,6 +191,7 @@
 	<!-- js -->
 	<script crossorigin src="https://unpkg.com/universal-cookie@3/umd/universalCookie.min.js"></script>
 	<script src="{{ url_for('static', path='/js/cart.js') }}"></script>
+	<script src="{{ url_for('static', path='/js/dropdown.js') }}"></script>
 </body>
 
 </html>
